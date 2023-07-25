@@ -1,0 +1,46 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+.conteiner{
+position:absolute;
+background:#0606b3;
+color:aliceblue;
+height:100%;
+width:100%;
+text-align:center;
+}
+.content-window{
+padding:10px 0;
+}
+#output{
+background:aliceblue;
+min-height:50px;
+color:black;
+}
+#output p{
+  color:black;
+  padding:10px 0;
+}
+#action{
+  background:aliceblue;
+
+color:gray;
+}
+.conteiner input{
+  padding:10px;
+  border:none;
+  display:block;
+  margin:10px auto;
+}
+.conteiner button{
+  padding:10px;
+  background:#8ecaff;
+  border:none;
+  outline:none;
+
+}
+.conteiner button:active{
+  background:red;
+
+}
