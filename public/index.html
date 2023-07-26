@@ -5,22 +5,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Socket IO</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style/main.css">
+    <link rel="stylesheet" href="./style/pages/style.css">
+    <link rel="stylesheet" href="./style/pages/login.css">
+    
 </head>
 
 <body>
-    <div class="conteiner">
-        <div class="content-window">
-            <div id="output"></div>
-            <div id="action"></div>
+    <div class="container">
+        <div class="main-container">
+            <div class="login page">
+                <div class="login-content">
+                    <h1>Welcome</h1>
+                    <span class="login-message">
+                        <p>Get ready to have an exciting time with your friends by playing fun online games!</p>
+                    </span>
+                    <div class="input-content">
+                        <span><img src="./img/user.png" alt=""></span>
+                        <input type="text" placeholder="Your Name">
+                    </div>
+                    <div class="input-content-ckeck">
+                        <span>Remember me?</span>
+                        <span class="checkbox-wrapper-22">
+                            <label class="switch" for="checkbox">
+                              <input type="checkbox" id="checkbox" />
+                              <div class="slider round"></div>
+                            </label>
+                        </span>
+                    </div>
+                    <button class="button-49" role="button">Get Started</button>
+                </div>
+                <div class="login-footer">
+                    <p>This page does not save any information about you.</p>
+                </div>
+            </div>
+            <div class="choose-game page">
+                <div class="choose-content">
+                    
+                </div>
+            </div>
+            <div class="home-page">
+                <div class="home-page-content">
+                    <div class="home-options">
+                        <input class="namePlayer" type="text" placeholder="your name">
+                        <input type="text" placeholder="room name">
+                        <input type="text" placeholder="amount sats">
+                        <input type="text" placeholder="max users">
+                        <input type="text" placeholder="limit time">
+                        <span>private: <input type="checkbox"></span>
+
+                        <button id="CreateRoom">Create room</button>
+                    </div>
+                    <div class="home-rooms">
+                        <div class="search-room">search</div>
+                        <div class="rooms-status">
+                           <div class="rooms">
+                                <span class="btn-join">Join</span>
+                                <span class="name-room">bitcoin+</span>
+                                <span class="user-connected">3/4</span>
+                           </div>
+                           <div class="rooms private">
+                                <span class="btn-join">Join</span> <!--candado -->
+                                <span class="name-room">bitcoin+</span>
+                                <span class="user-connected">3/4</span>
+                            </div>
+                           <div class="rooms">
+                                <span class="btn-join">Join</span>
+                                <span class="name-room">bitcoin+</span>
+                                <span class="user-connected">3/4</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <input type="text" id="username" placeholder="username">
-        <input type="text" id="message" placeholder="message">
-        <button id="send">Send</button>
+        <div class="alerts" style="display: none;">
+            <div class="private-room">
+                <span>Share this code to join to this room</span>
+                <input type="text" value="4846532" placeholder="private code">
+            </div>
+            <div class="info-room">
+                <span>bitcoin+</span>
+                <span>Created by: Moises</span>
+                <span> users connected: 3/4</span>
+                <span>bets: 1 sats</span>
+                <button>Join</button>
+            </div>
+        </div>
     </div>
 
     <script src="socket.io/socket.io.js"></script>
-    <script src="chat.js"></script>
+    <script src="script/main.js"></script>
+    <script src="script/snake.js"></script>
+    <script src="script/chat.js"></script>
 </body>
 
 </html>
