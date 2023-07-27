@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./style/main.css">
     <link rel="stylesheet" href="./style/pages/style.css">
     <link rel="stylesheet" href="./style/pages/login.css">
+    <link rel="stylesheet" href="./style/pages/chooseGame.css">
     
 </head>
 
@@ -16,10 +17,20 @@
         <div class="main-container">
             <div class="login page">
                 <div class="login-content">
-                    <h1>Welcome</h1>
-                    <span class="login-message">
-                        <p>Get ready to have an exciting time with your friends by playing fun online games!</p>
-                    </span>
+                    <div class="login-banner">
+                        <div class="text-signal"  style="transform: scale(1.5); top: 0px;  ">
+                            <div class="top-line"></div>
+                            <div class="center-text">WELCOME</div>
+                            <div class="bottom-line">
+                                <span class="line-left"></span>
+                                <span class="line-center"></span>
+                                <span class="line-right"></span>
+                            </div>
+                        </div>
+                        <span class="login-message">
+                            <p>Get ready to have an exciting time with your friends by playing fun online games!</p>
+                        </span>
+                    </div>
                     <div class="input-content">
                         <span><img src="./img/user.png" alt=""></span>
                         <input type="text" placeholder="Your Name">
@@ -40,43 +51,169 @@
                 </div>
             </div>
             <div class="choose-game page">
-                <div class="choose-content">
-                    
-                </div>
-            </div>
-            <div class="home-page">
-                <div class="home-page-content">
-                    <div class="home-options">
-                        <input class="namePlayer" type="text" placeholder="your name">
-                        <input type="text" placeholder="room name">
-                        <input type="text" placeholder="amount sats">
-                        <input type="text" placeholder="max users">
-                        <input type="text" placeholder="limit time">
-                        <span>private: <input type="checkbox"></span>
-
-                        <button id="CreateRoom">Create room</button>
+                <div class="text-signal" style="transform: scale(1.5);">
+                    <div class="top-line"></div>
+                    <div class="center-text">CHOOSE A GAME</div>
+                    <div class="bottom-line">
+                        <span class="line-left"></span>
+                        <span class="line-center"></span>
+                        <span class="line-right"></span>
                     </div>
-                    <div class="home-rooms">
-                        <div class="search-room">search</div>
-                        <div class="rooms-status">
-                           <div class="rooms">
-                                <span class="btn-join">Join</span>
-                                <span class="name-room">bitcoin+</span>
-                                <span class="user-connected">3/4</span>
-                           </div>
-                           <div class="rooms private">
-                                <span class="btn-join">Join</span> <!--candado -->
-                                <span class="name-room">bitcoin+</span>
-                                <span class="user-connected">3/4</span>
+                </div>
+                <div class="choose-content">
+                    <div class="arrow-left">
+                        <span></span>
+                    </div>
+                    <div class="games-content">
+                        <div class="games">
+                            <img src="./img/puzzle.png" alt="">
+                            <span class="text-content">
+                                <p>Puzzle</p>
+                            </span>
+                        </div>
+                        <div class="games focus=">
+                            <img src="./img/snake.jpg" alt="">
+                            <span class="text-content">
+                                <p>Snake</p>
+                            </span>
+                        </div>
+                        <div class="games">
+                            <img src="./img/jackpot.jpg" alt="">
+                            <span class="text-content">
+                                <p>Jackpot</p>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="arrow-right">
+                        <span></span>
+                    </div>
+                    <div class="lenght-content">
+                        <span></span>
+                        <span class="focus"></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="game-status active">
+                    <div class="game-page-content">
+                        <div class="game-options">
+                            <div class="input-content">
+                                <span><img src="./img/roomName.png" alt=""></span>
+                                <input type="text" placeholder="Room Name">
                             </div>
-                           <div class="rooms">
-                                <span class="btn-join">Join</span>
-                                <span class="name-room">bitcoin+</span>
-                                <span class="user-connected">3/4</span>
+                            <div class="input-content">
+                                <span><img src="./img/amount.png" alt=""></span>
+                                <input type="text" placeholder="Amount Sats">
+                            </div>
+                            <div class="input-content">
+                                <span><img src="./img/users.png" alt=""></span>
+                                <input type="text" placeholder="Max Users">
+                            </div>
+                            <div class="input-content">
+                                <span><img src="./img/timer.png" alt=""></span>
+                                <input type="text" placeholder="Limit Time">
+                            </div>
+                     
+                            <div class="input-content-ckeck">
+                                <span>Private: </span>
+                                <span class="checkbox-wrapper-22">
+                                    <label class="switch" for="checkbox2">
+                                      <input type="checkbox" id="checkbox2" />
+                                      <div class="slider round"></div>
+                                    </label>
+                                </span>
+                            </div>    
+                            <button class="button-49" role="button">Create Room</button>
+                        </div>
+                        <div class="line-divisor"></div>
+                        <div class="game-rooms">
+                            <div class="game-information">
+                                <div>
+                                    <span>Online rooms: 3</span>
+                                </div>
+                                <div class="search-room">search</div>
+                            </div>
+                            <div class="rooms-status">
+                               <div class="rooms">
+                                    <span class="btn-join">Join</span>
+                                    <div>
+                                        <span class="name-room">bitcoin+</span>
+                                        <span class="user-connected">2/4</span>
+                                    </div>
+                               </div>
+                               <div class="rooms private">
+                                    <span class="btn-join">
+                                        <img src="./img/lock.png" alt="">
+                                    </span>
+                                    <div class="selected">
+                                        <span class="name-room">bitcoin+</span>
+                                        <span class="user-connected">3/4</span>
+                                    </div>
+                                </div>
+                               <div class="rooms">
+                                    <span class="btn-join">Join</span>
+                                    <div>
+                                        <span class="name-room">bitcoin+</span>
+                                        <span class="user-connected">1/4</span>
+                                    </div>
+                                </div>
+                                <div class="rooms full">
+                                    <span class="btn-join">Join</span>
+                                    <div>
+                                        <span class="name-room">bitcoin+</span>
+                                        <span class="user-connected">4/4</span>
+                                    </div>
+                                </div>
+                                <div class="rooms">
+                                    <span class="btn-join">Join</span>
+                                    <div>
+                                        <span class="name-room">bitcoin+</span>
+                                        <span class="user-connected">3/4</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-divisor"></div>
+
+                        <div class="status-room-game">
+                            <div class="room-info-title">
+                                Room status: <span class="name-room">bitcoin+</span>
+                            </div>
+                            <div class="status-room-content">
+                                <div class="users-playing">
+                                    <div class="user1">
+                                        <img src="./img/men.png" alt="">
+                                        <span class="user-playing-name">Moises</span>
+                                    </div>
+                                    <div class="user2">
+                                        <img src="./img/men.png" alt="">
+                                        <span class="user-playing-name">Moises</span>
+                                    </div>
+                                    <div class="user3">
+                                        <img src="./img/women.png" alt="">
+                                        <span class="user-playing-name">Moises</span>
+                                    </div>
+                                    <div class="user4">
+                                        <img src="./img/women.png" alt="">
+                                        <span class="user-playing-name">Moises</span>
+                                    </div>
+                                </div>
+                                <div class="room-info">
+                                    <span>
+                                        <span>0.82555 Sats</span>
+                                        <span>5 minutes</span>
+                                        <span>3/4</span>
+                                        <span class="locked">
+                                            insert key
+                                        </span>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="home-page">
+               
             </div>
         </div>
         <div class="alerts" style="display: none;">

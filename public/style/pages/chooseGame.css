@@ -1,0 +1,329 @@
+.choose-game{
+    display: block;
+    /* display: none; */
+}
+.choose-game .text-signal{
+    height: 39px;
+}
+.choose-content{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75%;
+    max-width: 100%;
+    margin-top: 70px;
+    transition: 0.5s;
+}
+.games-content{
+    display: flex;
+    height: 100%;
+    max-width: 100%;
+}
+
+.games{
+    position: relative;
+    width: 270px;
+    height: 70%;
+    border: 1px solid #a5d3f5;
+    box-shadow:0 8px 18px 0 #a5d2f582;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin: 20px;
+    transition:0.5s;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.483);
+}
+.games:nth-child(1){
+    transform: rotate3d(-3, -84, -18, 45deg);
+}
+.games:nth-child(3){
+    transform: rotate3d(-3, -84, 18, 45deg);}
+.games:hover,
+.games.focus{
+    transform: scale(1.1);
+}
+.games img{
+    width: 100%;
+    height: 100%;
+    opacity: 0.9;
+}
+
+.choose-game:has(.game-status.active) .choose-content{
+    height: 30%;
+    margin-top: 39px;
+}
+.choose-game:not(:has(.game-status.active)) .game-status{
+    display: none;
+}
+
+
+.game-status{
+    height: calc(100% - 39px - 30% - 39px);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: normal;
+    transition: 0.5s;
+
+}
+
+.game-page-content{
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: normal;
+    background: rgba(11, 11, 11, 0.249);
+    padding: 15px;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+
+}
+.game-options{
+    padding: 0px 25px 25px 25px;
+    position: relative;
+    width: 33%;
+    overflow: auto;
+    max-height: calc(100% - 25px);
+}
+.game-options .input-content{
+    border: 1px solid #f0f8ff36;
+    width: 75%;
+    margin: auto auto 10px auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 #0000002e;
+}
+.line-divisor{
+    height: 100%;
+    width: 1px;
+    background-image: linear-gradient(0deg, transparent 0%, #ffffff3d 30%,transparent 50%, #ffffff3d 70%, transparent 100%);
+    right: 0;
+    top: 0;
+}
+.game-page-content::after{
+    content: 'OR';
+    position: absolute;
+    top: calc(50% - 20px);
+    left: calc(33.3% - 15px);
+    height: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-options input,
+.game-options button{
+    padding: 10px;
+    border: none;
+    margin: 5px;
+}
+.button-49, .button-49:after{
+    height: 50px;
+    line-height: 32px;
+    font-size: 14px;
+    content: 'Create Room';
+}
+
+
+.game-rooms{
+    width: 33%;
+    padding: 5px 25px 25px 25px;
+    position: relative;
+    max-height: calc(100% - 25px);    overflow: auto;
+    display: block;
+    
+}
+.game-information{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+.search-room{
+}
+.rooms-status{
+    margin: auto;
+    width: 100%;
+    max-width: 250px;
+}
+.rooms{
+    margin: 5px;
+    display: flex;
+    transition: 0.5s;
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 #0000002e;
+}
+.rooms:hover{
+    transform: scale(1.1);
+}
+.rooms div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid rgba(240, 248, 255, 0.213);
+    border-left: 0px;
+    border-radius: 0px 5px 5px 0px;
+    padding: 10px;
+    width: 100%;
+
+}
+.rooms div.selected{
+    background: #0088ff52;
+}
+.rooms.full div{
+    background: rgba(255, 0, 0, 0.478);
+    border: 1px solid rgba(240, 248, 255, 0.213);
+    border-radius: 5px ;
+
+} 
+.rooms.full .btn-join{
+   display: none;
+}
+.btn-join{
+    background: green;
+    padding: 10px 15px 11px 10px;
+    border-radius: 5px 0 0 5px;
+    border: 1px solid green;
+}
+/*priavate rooms*/
+.rooms.private .btn-join{
+    background: #8080807a;
+    height: 40px;
+    padding: 0;
+    width: 76px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid #8080807a;
+    align-items: center;
+}
+.rooms.private .btn-join img{
+    height: 40px;
+    width: 40px;
+}
+
+.status-room-game{
+    position: relative;
+    overflow: auto;
+    width: 33%;
+    padding: 0px 25px 25px 25px;
+    max-height: calc(100% - 25px);
+}
+.room-info-title{
+    position: absolute;
+    left: 5px;
+}
+.name-room{
+    color: #0088ff;
+}
+.status-room-content{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+}
+.users-playing{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px 0 #0000002e;
+    height: 300px;
+    width: 300px;
+    border: 1px solid #ffffff3d;
+    border-radius: 500px;
+}
+.user1,
+.user2,
+.user3,
+.user4{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    background-color: rgb(0, 0, 0);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.user1 img,
+.user2 img,
+.user3 img,
+.user4 img{
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    
+}
+.user1 .user-playing-name,
+.user2 .user-playing-name,
+.user3 .user-playing-name,
+.user4 .user-playing-name{
+   position: absolute;
+   bottom: -18px;
+   font-size: 0.8em;
+    
+}
+.user1{
+    left: 50px;
+}
+.user2{
+    bottom: 0;
+    right: 50px;
+}
+.user3{
+    right: 50px;
+    top: 50px;
+}
+.user4{
+    bottom: 50px;
+    left: 50px;
+}
+.room-info{
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 200px;
+    width: 200px;
+    border: 1px solid #ffffff3d;
+    border-radius: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px 0 #0000002e;
+    z-index: -1;
+}
+.room-info span{
+    display: block;
+    font-size: 1.3em;
+}
+.room-info span span:nth-child(2),
+.room-info span span:nth-child(3){
+    font-size: 0.9em;
+}
+
+.locked{
+    position: absolute;
+    font-size: 0.9em !important;
+    color: rgb(200, 200, 255);
+    bottom: 25px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    padding: 5px;
+    border-radius: 5px;
+    background: #1f1fff36;
+    width: 80px;
+    transform: scale(0.8);
+    cursor: pointer;
+    z-index: 10;
+}
+
