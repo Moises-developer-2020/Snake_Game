@@ -506,15 +506,3 @@ border-radius: 50%;
     transform: scale(1.5);
 }
 /**/
-
-.home-page{
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    display: none !important;
-}
-.home-page{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
