@@ -9,14 +9,43 @@
     <link rel="stylesheet" href="./style/pages/style.css">
     <link rel="stylesheet" href="./style/pages/login.css">
     <link rel="stylesheet" href="./style/pages/chooseGame.css">
-    <link rel="stylesheet" href="./style/pages/homePage.css">
-    
+    <link rel="stylesheet" href="./style/pages/gamePage.css">
+    <style>
+        .closePage{
+            display: none !important;
+            transition: 0.2s;
+            opacity: 1;
+            animation: closing 0.2s linear forwards;
+        }
+        @keyframes closing {
+            0%{
+                opacity: 1;
+            }
+            100%{
+                opacity: 0;
+            }
+        }
+        .pages{
+            transition: 0.2s;
+            opacity: 0;
+            animation: opening 0.2s linear forwards;
+        }
+        @keyframes opening {
+            0%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 1;
+            }
+        }
+        
+    </style>
 </head>
 
 <body>
     <div class="container">
         <div class="main-container">
-            <div class="login page">
+            <div class="login pages closing">
                 <div class="login-content">
                     <div class="login-banner">
                         <div class="text-signal"  style="transform: scale(1.5); top: 0px;  ">
@@ -34,7 +63,7 @@
                     </div>
                     <div class="input-content">
                         <span><img src="./img/user.png" alt=""></span>
-                        <input type="text" placeholder="Your Name">
+                        <input type="text" id="user-name" placeholder="Your Name" required>
                     </div>
                     <div class="input-content-ckeck">
                         <span>Remember me?</span>
@@ -45,13 +74,13 @@
                             </label>
                         </span>
                     </div>
-                    <button class="button-49" role="button">Get Started</button>
+                    <button class="button-49" id="btn-save-user" role="button">Get Started</button>
                 </div>
                 <div class="login-footer">
                     <p>This page does not save any information about you.</p>
                 </div>
             </div>
-            <div class="choose-game page">
+            <div class="choose-game pages closePage">
                 <div class="text-signal" style="transform: scale(1.5);">
                     <div class="top-line"></div>
                     <div class="center-text">CHOOSE A GAME</div>
@@ -213,7 +242,7 @@
                     </div>
                 </div>
             </div>
-            <div class="game-page">
+            <div class="game-page pages closePage">
                 <div class="game-chat active-"></div>
                 <div class="game-content">
                     <div class="users1-2">
@@ -303,9 +332,11 @@
     </div>
 
     <script src="socket.io/socket.io.js"></script>
+    <script src="script/services/services.js"></script>
     <script src="script/main.js"></script>
+    <script src="script/events.js"></script>
     <script src="script/snake.js"></script>
     <script src="script/chat.js"></script>
 </body>
 
-</html>
+</html> 

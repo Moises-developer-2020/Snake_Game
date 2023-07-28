@@ -1,6 +1,5 @@
 .choose-game{
-    /*display: block;*/
-    display: none;
+    display: block;
 }
 .choose-game .text-signal{
     height: 39px;
