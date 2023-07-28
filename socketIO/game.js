@@ -1,4 +1,4 @@
-const vB = require('./sharedState')
+const vB = require('./helpers/sharedState')
 let game =()=>{}
 
 game=(socket)=>{

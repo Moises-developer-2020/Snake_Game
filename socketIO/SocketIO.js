@@ -1,6 +1,7 @@
 const SocketIO=require('socket.io');
 // variables server-side
-let vB = require('./sharedState')
+let {connectedUsers} = require('./helpers/sharedState')
+let {findUser} = require('./helpers/helpers')
 // hash string value
 const buffer=require('buffer');
 
@@ -16,7 +17,7 @@ webSocketServer.init=(server)=>{
     //newConnection
     io.on('connection',(socket)=>{
         socket.on('test',(e)=>{
-            console.log(vB.connectedUsers);
+            console.log(connectedUsers);
         })
         stopDisconnectionUser(socket);
 
@@ -35,7 +36,7 @@ webSocketServer.init=(server)=>{
    });
 
 }
-// get name new user
+// get new user`s data
 function savedUser(socket){
     socket.on('saveUser',(user, callback)=>{
         
@@ -50,8 +51,8 @@ function savedUser(socket){
             disconnection:function(){//time of desconection, event 'disconnect' of the socket
                 console.log('disconnecting... '+this.name);
                     this.time=setTimeout(() => {
-                        var ud=vB.connectedUsers.indexOf(this.id);
-                        vB.connectedUsers.splice(ud,1)
+                        var ud=connectedUsers.indexOf(this.id);
+                        connectedUsers.splice(ud,1)
                         console.log("15s expired: delete: ", this.name);
                     }, 15000); //15s before delete user`s connection "session"
                 },
@@ -62,9 +63,9 @@ function savedUser(socket){
             },
         }
         // save new user on server
-        vB.connectedUsers.push(newUser);
+        connectedUsers.push(newUser);
 
-        console.log(vB.connectedUsers);
+        console.log(connectedUsers);
         // send new user to be save on frontend
         callback({
             user:newUser.name,
@@ -99,14 +100,14 @@ function deleteSession(socket){
         }`);
     };
 
-    // let dispositive = Buffer.from(vB.connectedUsers[0].session, 'base64').toString('utf-8').split('@')[0]
-    // let sessionDate =Buffer.from(vB.connectedUsers[0].session, 'base64').toString('utf-8').split('@')[1];
+    // let dispositive = Buffer.from(connectedUsers[0].session, 'base64').toString('utf-8').split('@')[0]
+    // let sessionDate =Buffer.from(connectedUsers[0].session, 'base64').toString('utf-8').split('@')[1];
     // console.log(dateInHours(sessionDate));
 
     // star the countdown to disconect the user in 15s
     let userIndex =findUser(socket.id);
     if (userIndex !== false) {
-        vB.connectedUsers[userIndex].disconnection();
+        connectedUsers[userIndex].disconnection();
     }
 
 }
@@ -117,7 +118,7 @@ function stopDisconnectionUser(socket){
         let userIndex = findUser(resp.session);
         if (userIndex !== false) {
             // stop disconnection and update his new socked id
-            vB.connectedUsers[userIndex].stopDisconnection(socket.id);
+            connectedUsers[userIndex].stopDisconnection(socket.id);
             // session active yet
             callback({
                 status:true  
@@ -131,13 +132,5 @@ function stopDisconnectionUser(socket){
     });
 }
 
-// search user in the array
-function findUser(socketID){
-    let index = vB.connectedUsers.findIndex((user) =>{
-        return user.id == socketID || user.session == socketID
-    });
 
-    if(index != -1) {return index};
-    return false;
-}
 module.exports=webSocketServer;
