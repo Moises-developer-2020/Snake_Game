@@ -81,8 +81,20 @@ function sentTo(url){
 function checkSession(){
     const user =JSON.parse(checkAndReturn('user'))
     if(user !== false){
-        console.log(atob(user.session));
-        
+        //console.log(atob(user.session));
+        socket.emit('validate-session',user,(resp)=>{
+            // status of session
+            if(!resp.status){
+                // delete session expire
+                deleteStorageData('user')
+                return
+            }
+            sentTo(user.url)
+        });
     }else{
     }
+}
+
+$('#checkbox').onclick=()=>{
+    socket.emit('test','0')
 }
