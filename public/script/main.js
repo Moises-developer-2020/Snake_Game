@@ -27,6 +27,18 @@ socket.on('create-room-answer',(resp)=>{
 socket.on('room-info-answer',(resp)=>{
     if(resp != false){
         let roomSelected = $('.rooms','all');
+        let indexAllUser;
+        roomSelected.forEach((element, i)=>{
+            if(element.id == resp.id){
+                indexAllUser = i;
+            }
+        });
+        if(indexAllUser != -1){
+            // paint data on game-rooms to the all users
+            $('.user-connected','all')[indexAllUser].innerHTML=resp.usersIn.length+'/'+resp.maxUsers;
+        }
+
+
         let index;
         for (let i = 0; i < roomSelected.length; i++) {
             if(roomSelected[i].classList.contains('selected')){
@@ -37,13 +49,13 @@ socket.on('room-info-answer',(resp)=>{
         if(index != -1){
             if(roomSelected[index].id == resp.id){
                 
-                // paint data
+                // paint data just to the users looking the status-room-game of this room
                 $('.name-room-status').innerHTML=resp.nameRoom;
                 $('#amounSats').innerHTML=resp.amounSats+ ' Sats';
                 $('#maxUsers').innerHTML=resp.usersIn.length+'/'+resp.maxUsers;
                 $('#limitTime').innerHTML=resp.limitTime + ' Minutes';
                 $('.btn-public-game').setAttribute('id',resp.id);
-            
+
                 if(!resp.private){
                     $('.locked').classList.remove('private');
                 }else{

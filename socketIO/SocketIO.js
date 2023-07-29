@@ -25,7 +25,7 @@ webSocketServer.init=(server)=>{
         })
         stopDisconnectionUser(socket);
 
-        console.log('new connection',socket.id);
+       // console.log('new connection',socket.id);
         // save new user connected        
         savedUser(socket);
         
@@ -35,7 +35,7 @@ webSocketServer.init=(server)=>{
 
         // discconect event
         socket.on('disconnect', () => {
-            console.log('Usuario desconectado:', socket.id);
+            //console.log('Usuario desconectado:', socket.id);
             deleteSession(socket)
         });
    });
@@ -70,7 +70,7 @@ function savedUser(socket){
         // save new user on server
         connectedUsers.push(newUser);
 
-        console.log(connectedUsers);
+        //console.log(connectedUsers);
         // send new user to be save on frontend
         callback({
             user:newUser.name,

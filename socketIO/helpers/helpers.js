@@ -43,6 +43,17 @@ helpers.getRoomData =(roomID)=>{
     }
     return false
 }
+
+helpers.validateUserInRoom =(roomID, userId)=>{
+    const room = rooms.find((r) => r.id === roomID);
+    const index = room.usersIn.findIndex((element)=>{
+        return element.id == userId
+    })
+    if(index != -1){
+        return true
+    }
+    return false
+}
 // sort number
 helpers.random = (rangoInicial, rangoFinal)=>{
     return Math.floor(Math.random() * (rangoFinal - rangoInicial + 1) + rangoInicial);

@@ -37,6 +37,7 @@ $('#btn-create-room').onsubmit=(event)=>{
     // sent info to the server
     socket.emit('create-room',newRoom, (resp)=>{
        checkAnswers(resp.status)
+       sentTo('game-page');
     })
     
 }
@@ -64,7 +65,11 @@ $('.rooms-status').onclick=function(event){
 
 // open game-page
 $('.locked').onclick=()=>{
-    sentTo('game-page')
+    socket.emit('join-room',$('.btn-public-game').id,(resp)=>{
+        //checkAnswers(resp.status);
+        console.log(resp);
+    })
+    sentTo('game-page');
 }
 
 // open and close msm content

@@ -1,5 +1,5 @@
 let {connectedUsers, rooms} = require('../helpers/sharedState')
-const {validateUser, getUserData, random, getRoomData} = require('../helpers/helpers')
+const {validateUser, getUserData, random, getRoomData, validateUserInRoom} = require('../helpers/helpers')
 
 
 let createRooms =()=>{}
@@ -18,7 +18,8 @@ createRooms=(socket, io)=>{
                 private:data.private,
                 createdBy:getUserData(socket.id).name,
                 usersIn:[{
-                    name:getUserData(socket.id).name
+                    name:getUserData(socket.id).name,
+                    id:getUserData(socket.id).id
                 }]
               }
             rooms.push(newRoom)
@@ -38,11 +39,11 @@ createRooms=(socket, io)=>{
         })
         
     });
-
+    // get room's info
     socket.on('room-info',(data, callback)=>{
         if(validateUser(socket.id)){
-
-            io.emit('room-info-answer',getRoomData(data));
+            // answer only the sender
+            socket.emit('room-info-answer',getRoomData(data));
 
             callback({
                 status:true
@@ -53,6 +54,32 @@ createRooms=(socket, io)=>{
             status:false
         })
     })
+
+    socket.on('join-room', (roomID, callback) => {
+        // ckeck if exist room
+        const room = rooms.find((r) => r.id === roomID);
+        if (!room) {
+          callback({ status: false, message: 'Room not founded' });
+          return;
+        }
+        if (room.usersIn.length >= room.maxUsers) {
+          callback({ status: false, message: 'The room it`s full' });
+          return;
+        }
+    
+        // if all it is ok
+        socket.join(roomID);
+
+        // subscribe the user to the room if not exist
+        if(validateUserInRoom(roomID, socket.id) == false){
+            room.usersIn.push({ name: getUserData(socket.id).name, id: socket.id });
+        }        
+        // update room's data on client-side to all users looking its info
+        io.emit('room-info-answer',getRoomData(roomID));
+
+        callback({ status: true, message: 'ok' });
+        console.log(rooms);
+      });
 
 }
 

@@ -3,16 +3,15 @@ const serverData = {
   connectedUsers:[],
   
   rooms:[{
-    id:'LM4545121',
+    id:'',
+    key:'',
     nameRoom:'',
-    amounSats:1,
-    maxUsers:0,
-    limitTime:1,
-    private:false,
-    users:[{
-        name:'',
-        socketInfo:'',
-        }]
+    amounSats:'',
+    maxUsers:'',
+    limitTime:'',
+    private:'',
+    createdBy:'',
+    usersIn:[]
   }]
 };
 module.exports = serverData;
