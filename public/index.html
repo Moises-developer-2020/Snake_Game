@@ -101,16 +101,16 @@
                                 <p>Puzzle</p>
                             </span>
                         </div>
-                        <div class="games focus=">
+                        <div class="games">
                             <img src="./img/snake.jpg" alt="">
                             <span class="text-content">
                                 <p>Snake</p>
                             </span>
                         </div>
                         <div class="games">
-                            <img src="./img/jackpot.jpg" alt="">
+                            <img src="./img/eatfish.jpg" alt="">
                             <span class="text-content">
-                                <p>Jackpot</p>
+                                <p>Eat fish</p>
                             </span>
                         </div>
                     </div>
@@ -123,78 +123,93 @@
                         <span></span>
                     </div>
                 </div>
-                <div class="game-status active">
+                <div class="game-status">
                     <div class="game-page-content">
-                        <div class="game-options">
-                            <div class="input-content">
-                                <span><img src="./img/roomName.png" alt=""></span>
-                                <input type="text" placeholder="Room Name">
+                        <form action="#" method="post" class="game-options" id="btn-create-room">
+                            <div class="game-information">
+                                <div>
+                                    <span>New room</span>
+                                </div>
                             </div>
-                            <div class="input-content">
-                                <span><img src="./img/amount.png" alt=""></span>
-                                <input type="text" placeholder="Amount Sats">
+                            <div class="form-content">
+                                <div class="input-content">
+                                    <span><img src="./img/roomName.png" alt=""></span>
+                                    <input type="text" name="roomName" placeholder="Room Name" required>
+                                </div>
+                                <div class="input-content">
+                                    <span><img src="./img/amount.png" alt=""></span>
+                                    <input type="text" name="amountSats" placeholder="Amount Sats" required>
+                                </div>
+                                <div class="input-content">
+                                    <span><img src="./img/users.png" alt=""></span>
+                                    <input type="text" name="maxUser" placeholder="Max Users" required>
+                                </div>
+                                <div class="input-content">
+                                    <span><img src="./img/timer.png" alt=""></span>
+                                    <input type="text" name="limitTime" placeholder="Limit Time" required>
+                                </div>
+                         
+                                <div class="input-content-ckeck">
+                                    <span>Private: </span>
+                                    <span class="checkbox-wrapper-22">
+                                        <label class="switch" for="checkbox2">
+                                          <input type="checkbox" name="private" id="checkbox2" />
+                                          <div class="slider round"></div>
+                                        </label>
+                                    </span>
+                                </div>    
+                                <button class="button-49"  role="button">Create Room</button>
                             </div>
-                            <div class="input-content">
-                                <span><img src="./img/users.png" alt=""></span>
-                                <input type="text" placeholder="Max Users">
-                            </div>
-                            <div class="input-content">
-                                <span><img src="./img/timer.png" alt=""></span>
-                                <input type="text" placeholder="Limit Time">
-                            </div>
-                     
-                            <div class="input-content-ckeck">
-                                <span>Private: </span>
-                                <span class="checkbox-wrapper-22">
-                                    <label class="switch" for="checkbox2">
-                                      <input type="checkbox" id="checkbox2" />
-                                      <div class="slider round"></div>
-                                    </label>
-                                </span>
-                            </div>    
-                            <button class="button-49" role="button">Create Room</button>
-                        </div>
+                        </form>
                         <div class="line-divisor"></div>
                         <div class="game-rooms">
                             <div class="game-information">
                                 <div>
-                                    <span>Online rooms: 3</span>
+                                    <span>Online rooms: <span id="onlineRooms">5</span></span>
                                 </div>
                                 <div class="search-room">search</div>
                             </div>
                             <div class="rooms-status">
-                               <div class="rooms">
-                                    <span class="btn-join">Join</span>
+                               <div class="rooms" id="45215">
+                                    <span class="btn-join">
+                                        <img src="./img/usersWhite.png" alt="">
+                                    </span>
                                     <div>
                                         <span class="name-room">bitcoin+</span>
                                         <span class="user-connected">2/4</span>
                                     </div>
                                </div>
-                               <div class="rooms private">
+                               <div class="rooms private" id="45215">
                                     <span class="btn-join">
                                         <img src="./img/lock.png" alt="">
                                     </span>
-                                    <div class="selected">
+                                    <div>
                                         <span class="name-room">bitcoin+</span>
                                         <span class="user-connected">3/4</span>
                                     </div>
                                 </div>
-                               <div class="rooms">
-                                    <span class="btn-join">Join</span>
+                               <div class="rooms" id="45215">
+                                    <span class="btn-join">
+                                        <img src="./img/usersWhite.png" alt="">
+                                    </span>
                                     <div>
                                         <span class="name-room">bitcoin+</span>
                                         <span class="user-connected">1/4</span>
                                     </div>
                                 </div>
-                                <div class="rooms full">
-                                    <span class="btn-join">Join</span>
+                                <div class="rooms full" id="45215">
+                                    <span class="btn-join">
+                                        <img src="./img/usersWhite.png" alt="">
+                                    </span>
                                     <div>
                                         <span class="name-room">bitcoin+</span>
                                         <span class="user-connected">4/4</span>
                                     </div>
                                 </div>
-                                <div class="rooms">
-                                    <span class="btn-join">Join</span>
+                                <div class="rooms" id="45215">
+                                    <span class="btn-join">
+                                        <img src="./img/usersWhite.png" alt="">
+                                    </span>
                                     <div>
                                         <span class="name-room">bitcoin+</span>
                                         <span class="user-connected">3/4</span>
@@ -202,38 +217,39 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="line-divisor"></div>
+                        <div class="line-divisor line2"></div>
 
                         <div class="status-room-game">
                             <div class="room-info-title">
-                                Room status: <span class="name-room">bitcoin+</span>
+                                Room status: <span class="name-room-status name-room">bitcoin+</span>
                             </div>
                             <div class="status-room-content">
                                 <div class="users-playing">
-                                    <div class="user1">
+                                    <div class="user1 userss">
                                         <img src="./img/men.png" alt="">
-                                        <span class="user-playing-name">Moises</span>
+                                        <span class="user-playing-name user1Name">Juan</span>
                                     </div>
-                                    <div class="user2">
+                                    <div class="user2 userss">
                                         <img src="./img/men.png" alt="">
-                                        <span class="user-playing-name">Moises</span>
+                                        <span class="user-playing-name user2Name">Anderson</span>
                                     </div>
-                                    <div class="user3">
+                                    <!-- <div class="user3 userss">
                                         <img src="./img/women.png" alt="">
-                                        <span class="user-playing-name">Moises</span>
-                                    </div>
-                                    <div class="user4">
+                                        <span class="user-playing-name user3Name">Moises</span>
+                                    </div> -->
+                                    <div class="user4 userss">
                                         <img src="./img/women.png" alt="">
-                                        <span class="user-playing-name">Moises</span>
+                                        <span class="user-playing-name user4Name">Marta</span>
                                     </div>
                                 </div>
                                 <div class="room-info">
                                     <span>
-                                        <span>0.82555 Sats</span>
-                                        <span>5 minutes</span>
-                                        <span>3/4</span>
-                                        <span class="locked">
-                                            insert key
+                                        <span id="amounSats">0.82555 Sats</span>
+                                        <span id="limitTime">5 minutes</span>
+                                        <span id="maxUsers">3/4</span>
+                                        <span class="locked private">
+                                            <span>insert key</span>
+                                            <span class="btn-public-game">Join</span>
                                         </span>
                                     </span>
                                 </div>
@@ -243,7 +259,17 @@
                 </div>
             </div>
             <div class="game-page pages closePage">
-                <div class="game-chat active-"></div>
+                <div class="game-chat active">
+                    <div class="chat-content">
+                        content
+                    </div>
+                    <div class="predf-msm">
+                        predifined msm
+                    </div>
+                    <div class="send-msm-content">
+                        sent
+                    </div>
+                </div>
                 <div class="game-content">
                     <div class="users1-2">
                         <div class="users">
@@ -293,7 +319,7 @@
                             <span>
                                 <img src="./img/settings.png" alt="">
                             </span>
-                            <span>
+                            <span id="chatContent">
                                 <img src="./img/chat.png" alt="">
                             </span>
                             <span>

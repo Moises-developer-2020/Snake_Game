@@ -2,10 +2,14 @@ const SocketIO=require('socket.io');
 // variables server-side
 let {connectedUsers} = require('./helpers/sharedState')
 let {findUser} = require('./helpers/helpers')
+
 // hash string value
 const buffer=require('buffer');
 
+// game functions
+const createRooms = require('./rooms/create-room')
 const game = require('./game')
+
 
 const webSocketServer={}
 
@@ -27,6 +31,7 @@ webSocketServer.init=(server)=>{
         
         // game function
         game(socket)
+        createRooms(socket, io)
 
         // discconect event
         socket.on('disconnect', () => {

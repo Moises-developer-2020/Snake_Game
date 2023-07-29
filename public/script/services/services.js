@@ -10,7 +10,7 @@ function checkStorageData(item) {
 function getStorageData(item) {
     return localStorage.getItem(item);
 }
-//delete
+//delete 
 function deleteStorageData(item){
     localStorage.removeItem(item);
 }
@@ -94,6 +94,22 @@ function checkSession(){
     }else{
     }
 }
+// ckeck answers from each fecth
+function checkAnswers(value){
+    if(!value){
+        // that means the session it is not valid
+        location.reload();
+    }
+}
+
+function paintSelected(element, className){
+    element.forEach((e)=>{
+        removeClass([{e:e,c:className}])
+    });
+    setClass([{e:element,c:className}])
+}
+
+
 
 $('#checkbox').onclick=()=>{
     socket.emit('test','0')

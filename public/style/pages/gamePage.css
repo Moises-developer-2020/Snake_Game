@@ -11,9 +11,22 @@
     left: 0;
     height: 100%;
     width: 0px;
-    background: rgba(255, 0, 0, 0.261);
+    background-color: rgba(0, 0, 0, 0.385);
     transition: 0.5s;
     overflow: hidden;
+    display: block;
+}
+.chat-content{
+    height: calc(100% - 150px);
+    background: #00000082;
+}
+.predf-msm{
+    height:100px;
+    background: #d65b5b82;
+}
+.send-msm-content{
+    height: 50px;
+    background: #54343482;
 }
 .game-chat.active{
     width: 300px;
@@ -33,7 +46,7 @@
 }
 .users1-2,
 .users3-4{
-    height: 70px;
+    height: 80px;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -85,6 +98,7 @@
     border-radius: 5px;
 }
 .option-game span{
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -95,6 +109,17 @@
     margin-right: 10px;
     margin-left: 10px;
     cursor: pointer;
+}
+.option-game span:nth-child(3)::after{
+    position: absolute;
+    content: '';
+    height:40px;
+    width: 4px;
+    left: 15px;
+    top: -5px;
+    background-color: black;
+    border-radius: 5px;
+    transform: rotate(135deg);
 }
 .option-game span img{
     height: 34px;
@@ -107,6 +132,6 @@
 
 
 .main-game-content{
-    height: calc(100% - 140px);
+    height: calc(100% - 160px);
     background-color: rgba(0, 0, 0, 0.385);
 }

@@ -1,22 +1,51 @@
-let {connectedUsers} = require('./sharedState')
+let {connectedUsers, rooms} = require('./sharedState')
 
-const serverData = {
-    // validate users session
-    validateUser:function(socketID){
-        if(this.findUser(socketID) !== false){
-            return true;
-        }
-        return false;
-    },
-    // search user in the array
-    findUser: function(socketID){
-        let index = connectedUsers.findIndex((user) =>{
-            return user.id == socketID || user.session == socketID
-        });
+const helpers = {};
 
-        if(index != -1) {return index};
-        return false;
+// validate users session
+helpers.validateUser = (socketID)=>{
+    if(helpers.findUser(socketID) !== false){
+        return true;
     }
-};
+    return false;
+},
 
-module.exports = serverData;
+// search user in the array
+helpers.findUser=(socketID)=>{
+    let index = connectedUsers.findIndex((user) =>{
+        return user.id == socketID || user.session == socketID
+    });
+
+    if(index != -1) {return index};
+    return false;
+}
+
+helpers.getUserData =(socketID)=>{
+    if(helpers.validateUser(socketID)){
+        const user = connectedUsers[helpers.findUser(socketID)];
+        return {
+            name:user.name,
+            id: user.id,
+            session: user.session
+        }
+    }   
+    return {
+        status: false
+    }
+}
+
+helpers.getRoomData =(roomID)=>{
+    const index = rooms.findIndex((element)=>{
+        return element.id == roomID
+    })
+    if(index != -1){
+        return rooms[index]
+    }
+    return false
+}
+// sort number
+helpers.random = (rangoInicial, rangoFinal)=>{
+    return Math.floor(Math.random() * (rangoFinal - rangoInicial + 1) + rangoInicial);
+}
+
+module.exports = helpers;

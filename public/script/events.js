@@ -6,8 +6,73 @@ $('#btn-save-user').onclick=()=>{
             session:resp.session,
             url:''
         }
-        setStorageData('user',data) 
+        // save user`s session 
+        setStorageData('user',data)
+        // redirect to
         sentTo('choose-game')
         
     })
+}
+// open game-status
+$('.games-content').onclick=(event)=>{
+    if(event.target.classList.contains('games')){
+        let game = event.target;
+        setClass([{e:game,c:'focus'}])
+        setClass([{e:$('.game-status'),c:'active'}])
+    }
+}
+// create room
+$('#btn-create-room').onsubmit=(event)=>{
+    event.preventDefault();
+    const {roomName, amountSats, maxUser, limitTime, private } = event.target;
+
+    let newRoom={
+        roomName:roomName.value,
+        amountSats:amountSats.value,
+        maxUser:maxUser.value,
+        limitTime:limitTime.value,
+        private:private.checked
+    }
+
+    // sent info to the server
+    socket.emit('create-room',newRoom, (resp)=>{
+       checkAnswers(resp.status)
+    })
+    
+}
+
+// see status of the selected room
+$('.rooms-status').onclick=function(event){
+    if(event.target.classList.contains('rooms')){
+        let roomID=event.target.id;
+        $('.rooms','all').forEach(element => {
+            element.classList.remove('selected')
+        });
+        event.target.classList.add('selected')
+        //paint selected room
+       // paintSelected("#"+roomID,'selected')
+
+       // open status-room-game
+        setClass([{e:$('.status-room-game'),c:'open'}])
+        
+        // ask the info about the room
+        socket.emit('room-info',roomID ,(resp)=>{
+            checkAnswers(resp.status);
+        });
+    }
+}
+
+// open game-page
+$('.locked').onclick=()=>{
+    sentTo('game-page')
+}
+
+// open and close msm content
+$('#chatContent').onclick=()=>{
+    if($('.game-chat ').classList.contains('active')){
+        removeClass([{e:$('.game-chat '),c:'active'}]);
+        return
+    }
+    setClass([{e:$('.game-chat '),c:'active'}]);
+
 }
