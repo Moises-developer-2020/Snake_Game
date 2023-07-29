@@ -76,3 +76,8 @@ socket.on('room-info-answer',(resp)=>{
         }            
     }
 })
+
+// to all users in the same room
+socket.on('userInThisRoom',(resp)=>{
+    console.log(resp);
+})

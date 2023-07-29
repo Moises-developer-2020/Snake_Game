@@ -23,7 +23,10 @@ createRooms=(socket, io)=>{
                 }]
               }
             rooms.push(newRoom)
-
+            
+            // join user who create it to the room
+            socket.join(newRoom.id);
+            
             //sent answer to all users
             io.emit('create-room-answer',newRoom)
             
@@ -74,12 +77,17 @@ createRooms=(socket, io)=>{
         if(validateUserInRoom(roomID, socket.id) == false){
             room.usersIn.push({ name: getUserData(socket.id).name, id: socket.id });
         }        
+
+        // answer to all user connected to this room
+        io.to(roomID).emit("userInThisRoom",getRoomData(roomID));
+
         // update room's data on client-side to all users looking its info
         io.emit('room-info-answer',getRoomData(roomID));
 
+
         callback({ status: true, message: 'ok' });
-        console.log(rooms);
-      });
+        //console.log(rooms);
+    });
 
 }
 
