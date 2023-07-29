@@ -52,6 +52,8 @@ function savedUser(socket){
             name:user.name,
             id:socket.id,
             session:session,
+            room:'',
+            ready:false,
             time:null,
             disconnection:function(){//time of desconection, event 'disconnect' of the socket
                 console.log('disconnecting... '+this.name);

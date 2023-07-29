@@ -66,8 +66,8 @@ $('.rooms-status').onclick=function(event){
 // open game-page
 $('.locked').onclick=()=>{
     socket.emit('join-room',$('.btn-public-game').id,(resp)=>{
-        //checkAnswers(resp.status);
-        console.log(resp);
+        //checkAnswers(resp.status); not becouse resp return false if the room it is full as well
+        //console.log(resp);
     })
     sentTo('game-page');
 }
@@ -81,3 +81,10 @@ $('#chatContent').onclick=()=>{
     setClass([{e:$('.game-chat '),c:'active'}]);
 
 }
+
+// btn ready to play
+$('#btn-user-ready').onclick=()=>{
+    // close msm
+    createAlert();
+    socket.emit('Im-ready-to-play');
+};

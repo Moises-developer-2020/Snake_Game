@@ -80,4 +80,53 @@ socket.on('room-info-answer',(resp)=>{
 // to all users in the same room
 socket.on('userInThisRoom',(resp)=>{
     console.log(resp);
+    // clear lasted users painted
+    $('.users','all').forEach(element => {
+        element.innerHTML='';
+    });
+    // paint data of the room
+    $('#game-time').innerHTML= resp.limitTime+':00';
+    detectInit(resp);
+
+    // paint users
+    for (let i = 0; i < resp.usersIn.length; i++) {
+        $('.users','all')[i].innerHTML +=`${i % 2 ==0?'<div class="profile-user"><img src="./img/men.png" alt=""></div>':''}
+                            <div class="user-details">
+                                <span>${resp.usersIn[i].name}</span>
+                                <span>0 scores</span>
+                            </div>
+                            ${i % 2 != 0?'<div class="profile-user"><img src="./img/men.png" alt=""></div>':''}
+                            <div class="user-notification"><img src="./img/done.png" alt=""></div>`;
+    }
 })
+function detectInit(resp){
+    if(resp.usersIn.length == resp.maxUsers){
+        // start game
+        createAlert('.usersReady');
+        return
+    }
+    createAlert('.waitingUsers');
+    $('#waitingUsers').innerHTML = resp.usersIn.length+'/'+resp.maxUsers;
+
+}
+
+// server answer
+socket.on('Im-ready-to-play-answer',(resp)=>{
+    for (let i = 0; i < resp.length; i++) {
+        if(resp[i].ready){
+            setClass([{e:$('.user-notification','all')[i],c:'ready'}])
+        }else{
+            removeClass([{e:$('.user-notification','all')[i],c:'ready'}])
+        }
+    }
+
+
+});
+
+socket.on('start-the-game',(resp)=>{
+    // crear notification ready
+    for (let i = 0; i < resp.length; i++) {
+        removeClass([{e:$('.user-notification','all')[i],c:'ready'}])
+    }
+    countdown(resp.limitTime,'#game-time')
+});

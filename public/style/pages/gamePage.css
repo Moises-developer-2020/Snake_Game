@@ -54,6 +54,7 @@
     overflow: hidden;
 }
 .users{
+    position: relative;
     display: flex;
     justify-content:center;
     align-items: center;
@@ -80,9 +81,46 @@
 }
 .user-notification{
     position: absolute;
+    bottom: 0;
     display: none;
 }
-.status-game{}
+.users1-2 .users:nth-child(3) .user-notification,
+.users3-4 .users:nth-child(3) .user-notification{
+    right: 45px;
+}
+.users1-2 .users:nth-child(1) .user-notification,
+.users3-4 .users:nth-child(1) .user-notification{
+    left: 45px;
+}
+
+.user-notification.ready{
+    display: block;
+}
+/*.users3-4:has(.users3-4 .users:nth-child(3) .user-notification) .users:nth-child(3){
+    display: flex;
+}*/
+/* .users3-4:has(.users3-4 .users:nth-child(3) .user-notification) .option-game{
+    margin-left: 15px;
+} */
+.users3-4:not(:has(.users:nth-child(3) .profile-user)) .users:nth-child(3){
+    display: none;
+}
+.users3-4:not(:has(.users:nth-child(1) .profile-user)) .users:nth-child(3){
+    display: flex !important;
+}
+.users3-4:not(:has(.users:nth-child(3) .profile-user)) .option-game{
+    margin-right: 15px;
+}
+.users3-4:not(:has(.users:nth-child(1) .profile-user)) .option-game{
+    margin-right: 0px !important;
+}
+.status-game{
+    display: block;
+    position: absolute;
+    right: -50%;
+    left: -50%;
+    margin: auto;
+}
 
 .game-timer span{
     text-align: center;
@@ -132,6 +170,47 @@
 
 
 .main-game-content{
+    position: relative;
     height: calc(100% - 160px);
     background-color: rgba(0, 0, 0, 0.385);
+}
+.msm-game{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+}
+.msm-game.active{
+    display: flex;
+}
+.usersReady,
+.waitingUsers{
+    font-size: 1.2em;
+    display: none;
+}
+.usersReady.show,
+.waitingUsers.show{
+    display: block;
+}
+.usersReady-title{
+    display: block;
+    font-size: 1.5em;
+    margin-bottom: 50px;
+}
+#btn-user-ready{
+    margin: 10px;
+    background: #00ff1f75;
+    padding: 15px;
+    border-radius: 100px;
+    cursor: pointer;
+}
+#btn-user-quiet{
+    margin: 10px;
+    background: #ff000c75;
+    padding: 15px;
+    border-radius: 100px;
+    cursor: pointer;
 }

@@ -109,8 +109,35 @@ function paintSelected(element, className){
     setClass([{e:element,c:className}])
 }
 
+// countdown
+function countdown(minutes, element) {
+    let totalSeconds = minutes * 60;
+    const interval = setInterval(function () {
+        const minutesLeft = Math.floor(totalSeconds / 60);
+        const secondsLeft = totalSeconds % 60;
 
+        const formattedMinutes = minutesLeft.toString().padStart(2, '0');
+        const formattedSeconds = secondsLeft.toString().padStart(2, '0');
 
+        $(element).innerHTML=`${formattedMinutes}:${formattedSeconds}`;
+
+        totalSeconds--;
+
+        if (totalSeconds < 0) {
+            clearInterval(interval);
+        }
+    }, 1000); // 1000 milisegundos = 1 segundo
+
+}
+
+function createAlert(show='null'){
+    $('.alertGame','all').forEach((el)=>{
+        removeClass([{e:el,c:'show'}])
+    })
+    if(show != 'null'){
+        setClass([{e:$(show),c:'show'}])
+    }
+}
 $('#checkbox').onclick=()=>{
     socket.emit('test','0')
 }

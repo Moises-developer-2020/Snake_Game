@@ -26,12 +26,17 @@ helpers.getUserData =(socketID)=>{
         return {
             name:user.name,
             id: user.id,
-            session: user.session
+            session: user.session,
+            room:user.room
         }
     }   
     return {
         status: false
     }
+}
+helpers.updateUserRoom= (socketID, newRoom)=>{
+    const user = connectedUsers[helpers.findUser(socketID)];
+    user.room = newRoom;
 }
 
 helpers.getRoomData =(roomID)=>{
