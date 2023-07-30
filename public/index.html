@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./style/pages/login.css">
     <link rel="stylesheet" href="./style/pages/chooseGame.css">
     <link rel="stylesheet" href="./style/pages/gamePage.css">
+    <link rel="stylesheet" href="./style/pages/resize.css">
     <style>
         .closePage{
             display: none !important;
@@ -175,7 +176,7 @@
                                         <img src="./img/usersWhite.png" alt="">
                                     </span>
                                     <div>
-                                        <span class="name-room">bitcoin+</span>
+                                        <span class="name-room">The Satoshi Legacy</span>
                                         <span class="user-connected">2/4</span>
                                     </div>
                                </div>
@@ -184,7 +185,7 @@
                                         <img src="./img/lock.png" alt="">
                                     </span>
                                     <div>
-                                        <span class="name-room">bitcoin+</span>
+                                        <span class="name-room">BTC Node</span>
                                         <span class="user-connected">3/4</span>
                                     </div>
                                 </div>
@@ -193,16 +194,16 @@
                                         <img src="./img/usersWhite.png" alt="">
                                     </span>
                                     <div>
-                                        <span class="name-room">bitcoin+</span>
+                                        <span class="name-room">Honey Badgers</span>
                                         <span class="user-connected">1/4</span>
                                     </div>
                                 </div>
-                                <div class="rooms full selected" id="45215">
+                                <div class="rooms full" id="45215">
                                     <span class="btn-join">
                                         <img src="./img/usersWhite.png" alt="">
                                     </span>
                                     <div>
-                                        <span class="name-room">bitcoin+</span>
+                                        <span class="name-room">Bitcoin Fellowship</span>
                                         <span class="user-connected">4/4</span>
                                     </div>
                                 </div>
@@ -211,7 +212,7 @@
                                         <img src="./img/usersWhite.png" alt="">
                                     </span>
                                     <div>
-                                        <span class="name-room">bitcoin+</span>
+                                        <span class="name-room">The lightning Walkers</span>
                                         <span class="user-connected">3/4</span>
                                     </div>
                                 </div>
@@ -221,17 +222,17 @@
 
                         <div class="status-room-game">
                             <div class="room-info-title">
-                                Room status: <span class="name-room-status name-room">bitcoin+</span>
+                                Room status: <span class="name-room-status name-room">BTC Node</span>
                             </div>
                             <div class="status-room-content">
                                 <div class="users-playing">
                                     <div class="user1 userss">
                                         <img src="./img/men.png" alt="">
-                                        <span class="user-playing-name user1Name">Juan</span>
+                                        <span class="user-playing-name user1Name">Roberto</span>
                                     </div>
                                     <div class="user2 userss">
                                         <img src="./img/men.png" alt="">
-                                        <span class="user-playing-name user2Name">Anderson</span>
+                                        <span class="user-playing-name user2Name">Oscar</span>
                                     </div>
                                     <!-- <div class="user3 userss">
                                         <img src="./img/women.png" alt="">
@@ -239,12 +240,12 @@
                                     </div> -->
                                     <div class="user4 userss">
                                         <img src="./img/women.png" alt="">
-                                        <span class="user-playing-name user4Name">Marta</span>
+                                        <span class="user-playing-name user4Name">Jonathan</span>
                                     </div>
                                 </div>
                                 <div class="room-info">
                                     <span>
-                                        <span id="amounSats">0.82555 Sats</span>
+                                        <span id="amounSats">21000 Sats</span>
                                         <span id="limitTime">5 minutes</span>
                                         <span id="maxUsers">3/4</span>
                                         <span class="locked private">
@@ -272,7 +273,7 @@
                 </div>
                 <div class="game-content">
                     <div class="users1-2">
-                        <div class="users">
+                        <div class="users users1-mobile">
                             <!-- <div class="profile-user">
                                 <img src="./img/men.png" alt="">
                             </div>
@@ -290,7 +291,7 @@
                             </div>
                             <div></div>
                         </div>
-                        <div class="users">
+                        <div class="users users2-mobile">
                             <!-- <div class="user-details">
                                 <span>Moises</span>
                                 <span>15 points</span>
@@ -302,7 +303,7 @@
                         </div>
                     </div>
                     <div class="main-game-content">
-                        <div class="msm-game active">
+                        <div class="msm-game">
                             <div class="usersReady alertGame show-">
                                 <div>
                                     <span class="usersReady-title">
@@ -325,10 +326,29 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="game-window"></div>
+                        <div class="game-window">
+                            <div class="closePage">
+                                <button id="replay">
+                                    <i class="fas fa-play"></i>
+                                    RESTART
+                                  </button>
+                                  <button id="player">
+                                    player 0
+                                  </button>
+                                  <button id="start">
+                                    start
+                                  </button>
+                                  <div id="ui">
+                                    <span id="score1">00</span>
+                                  </div>
+                            </div>
+                            <div class="canvasGame" id="canvas">
+                                
+                            </div>
+                        </div>
                     </div>
                     <div class="users3-4">
-                        <div class="users">
+                        <div class="users users3-mobile">
                             <!-- <div class="profile-user">
                                 <img src="./img/men.png" alt="">
                             </div>
@@ -349,7 +369,7 @@
                                 <img src="./img/microphone.png" alt="">
                             </span>
                         </div>
-                        <div class="users">
+                        <div class="users users4-mobile">
                             <!-- <div class="user-details">
                                 <span>Moises</span>
                                 <span>15 points</span>
@@ -358,6 +378,20 @@
                                 <img src="./img/women.png" alt="">
                             </div>
                             <div class="user-notification"></div> -->
+                        </div>
+                        <div class="joystick closePage- ">
+                            <div class="arrow-left D-left">
+                                <span></span>
+                            </div>
+                            <div class="arrow-left D-top">
+                                <span></span>
+                            </div>
+                            <div class="arrow-right D-right">
+                                <span></span>
+                            </div>
+                            <div class="arrow-left D-down">
+                                <span></span>
+                            </div>
                         </div>
                     </div>
                </div>
@@ -380,9 +414,10 @@
 
     <script src="socket.io/socket.io.js"></script>
     <script src="script/services/services.js"></script>
+    <script src="script/services/game.js"></script>
     <script src="script/main.js"></script>
     <script src="script/events.js"></script>
-    <script src="script/snake.js"></script>
+    <script src="script/games/snake.js"></script>
     <script src="script/chat.js"></script>
 </body>
 

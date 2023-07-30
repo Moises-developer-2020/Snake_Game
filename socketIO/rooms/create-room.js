@@ -20,6 +20,7 @@ createRooms=(socket, io)=>{
                 usersIn:[{
                     name:getUserData(socket.id).name,
                     id:getUserData(socket.id).id,
+                    session:getUserData(socket.id).session,
                     index:0,
                     ready:false
                 }]
@@ -86,7 +87,7 @@ createRooms=(socket, io)=>{
 
         // subscribe the user to the room if not exist
         if(validateUserInRoom(roomID, socket.id) == false){
-            room.usersIn.push({ name: getUserData(socket.id).name, id: socket.id,index: room.usersIn.length, ready:false});
+            room.usersIn.push({ name: getUserData(socket.id).name, id:getUserData(socket.id).id, session:getUserData(socket.id).session ,index: room.usersIn.length, ready:false});
         }        
 
         // answer to all user connected to this room
@@ -117,12 +118,20 @@ createRooms=(socket, io)=>{
                 allUserReady = true;
             }
         }
+        io.to(user.room).emit("Im-ready-to-play-answer",room.usersIn);
+
         if(allUserReady){
             io.to(user.room).emit("start-the-game",room);
-        }else{
-            io.to(user.room).emit("Im-ready-to-play-answer",room.usersIn);
-
         }
+    });
+
+    socket.on('move-direction',(data)=>{
+        const user = getUserData(socket.id);
+        let moving={
+            direction:data.direction,
+            index:data.index
+        }        
+        io.to(user.room).emit("move-direction-answer",moving);
     })
 
 }

@@ -5,6 +5,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 .game-chat{
     position: absolute;
@@ -51,7 +52,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    overflow: hidden;
+   
 }
 .users{
     position: relative;
@@ -71,9 +72,10 @@
     overflow: hidden;
 }
 .profile-user img{
-    width: 60px;
-    height: 60px;
+    width: 65px;
+    height: 65px;
     border-radius: 80px;
+    margin-bottom: 3px;
 }
 .user-details span{
     display: block;
@@ -91,6 +93,22 @@
 .users1-2 .users:nth-child(1) .user-notification,
 .users3-4 .users:nth-child(1) .user-notification{
     left: 45px;
+}
+.userGame0{
+    border: 2px solid blue;
+    box-shadow: 0px 0px 20px 0 #0011ff73;
+}
+.userGame1{
+    border: 2px solid green;
+    box-shadow: 0px 0px 20px 0 #04ff0073;
+}
+.userGame2{
+    border: 2px solid red;
+    box-shadow: 0px 0px 20px 0 #ff000073;
+}
+.userGame3{
+    border: 2px solid yellow;
+    box-shadow: 0px 0px 20px 0 #fff70073;
 }
 
 .user-notification.ready{
@@ -172,7 +190,7 @@
 .main-game-content{
     position: relative;
     height: calc(100% - 160px);
-    background-color: rgba(0, 0, 0, 0.385);
+    /*background-color: rgba(0, 0, 0, 0.385);*/
 }
 .msm-game{
     position: absolute;
@@ -181,10 +199,18 @@
     display: none;
     justify-content: center;
     align-items: center;
+    background: #0000001c;
+    z-index: 1;
+    backdrop-filter: blur(18px);
 
 }
-.msm-game.active{
+.msm-game:has(.usersReady.show),
+.msm-game:has(.waitingUsers.show){
     display: flex;
+}
+.main-game-content:has(.usersReady.show) #canvas,
+.main-game-content:has(.waitingUsers.show) #canvas{
+    display: none;
 }
 .usersReady,
 .waitingUsers{
@@ -213,4 +239,19 @@
     padding: 15px;
     border-radius: 100px;
     cursor: pointer;
+}
+
+canvas{
+    position: absolute;
+    left: 2.5%;
+    width: 95%;
+    height: 95%;
+    top: 2.5%;
+    /* background: #1d1e23;
+    border: 1px solid #232332; */
+    border-radius: 10px;
+    box-shadow: 0 0 5px 5px #0000003d;
+}
+.joystick{
+    display: none;
 }

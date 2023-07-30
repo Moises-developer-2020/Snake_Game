@@ -1,0 +1,53 @@
+@media screen and (max-width: 900px) {
+    .joystick{
+        position: absolute;
+        bottom: 21px;
+        right: 33px;
+        /* background: aqua; */
+        height: 67px;
+        width: 80px;
+        display: block;
+    }
+    .D-left{
+        top: 15px;
+    }
+    .D-top{
+        top: -10px;
+        transform: rotate(135deg);
+        left: 46px;
+    }
+    .D-right{
+        top: 33px;
+    }
+    .D-down{
+        left: 28px;
+        transform: rotate(315deg);
+        top: 56px;
+    }
+    
+    .users1-mobile{
+        position: absolute;
+        transform: scale(0.6);
+        left: 0;
+    }
+    .users2-mobile{
+        position: absolute;
+        transform: scale(0.6);
+        right: 0;
+    }
+    .users3-mobile{
+        position: absolute;
+        transform: scale(0.6);
+        left: 10%;
+        top: 0;
+    }
+    .users4-mobile{
+        position: absolute;
+        transform: scale(0.6);
+        right: 10%;
+        top: 0;
+    }
+    .option-game{
+        margin: 20px;
+    }
+}

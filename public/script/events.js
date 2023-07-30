@@ -81,10 +81,15 @@ $('#chatContent').onclick=()=>{
     setClass([{e:$('.game-chat '),c:'active'}]);
 
 }
-
+let o =0;
 // btn ready to play
 $('#btn-user-ready').onclick=()=>{
     // close msm
     createAlert();
     socket.emit('Im-ready-to-play');
+    
+    if(o == 0){
+        start.click(); 
+    }
+    o++;
 };

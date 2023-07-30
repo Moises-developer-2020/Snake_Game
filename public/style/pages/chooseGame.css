@@ -321,6 +321,11 @@
 }
 .name-room{
     color: #0088ff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+    width: 115px;
 }
 .status-room-content{
     position: absolute;
